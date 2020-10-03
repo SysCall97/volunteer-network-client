@@ -19,9 +19,13 @@ const View = () => {
                     <Home />
                 </Route>
 
-                <PrivateRoute path="/register/:id">
+                {/* <PrivateRoute path="/register/:id">
                     <Register />
-                </PrivateRoute>
+                </PrivateRoute> */}
+
+                <Route path="/register/:id">
+                    <Register />
+                </Route>
 
                 <Route path="/login">
                     <Login />
