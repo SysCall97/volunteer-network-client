@@ -1,46 +1,104 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import logo from '../../images/logos/logo.png';
-import { volunteeringFileds } from '../../fakeData';
 import { useForm } from "react-hook-form";
 import { userContext } from '../../App';
 import { Button } from 'react-bootstrap';
 
 const Register = () => {
     const { id } = useParams();
-    const selectedField = volunteeringFileds.find(vf => vf.id === Number(id));
+    // const selectedField = volunteeringFileds.find(vf => vf.id === Number(id));
+    const [selectedField, setSelectedField] = useState({});
     const { user } = useContext(userContext);
     const [loggedinUser] = user;
 
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = data => {
-        //backend will handle this part
+        fetch(`http://localhost:5000/getUserByEmail/${data.email}`)
+            .then(res => res.json())
+            .then(user => {
+                if (user) {
+                    const newEvent = {
+                        eventId: id,
+                        date: data.date,
+                        description: data.description
+                    };
+                    user.reisteredEvents.push(newEvent);
+                    // console.log(user);
+                    fetch(`http://localhost:5000/updateUser/${user._id}`, {
+                        method: 'PATCH',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(user)
+                    })
+                        .then(res => res.json())
+                        .then(isInserted => {
+                            if (isInserted) {
+                                console.log('user updated successfully');
+                                //history replace
+                            }
+                        });
+                } else {
+                    const info = {
+                        displayName: data.displayName,
+                        email: data.email,
+                        reisteredEvents: [
+                            {
+                                eventId: id,
+                                date: data.date,
+                                description: data.description
+                            }
+                        ]
+                    }
+
+                    fetch(`http://localhost:5000/setNewUser`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(info)
+                    })
+                        .then(res => res.json())
+                        .then(isInserted => {
+                            if (isInserted) {
+                                alert(isInserted);
+                            }
+                        });
+                }
+            })
     }
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/getEventById/${id}`)
+            .then(res => res.json())
+            .then(data => setSelectedField(data));
+    }, []);
 
     return (
         <div className="formContainer">
             <img src={logo} alt="" width="20%" />
             <div className="form">
                 <div className="formContainer2">
-                <h2>Register as a Volunteer</h2>
+                    <h2>Register as a Volunteer</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
-                        <input name="name" className="input" placeholder="Your Name" defaultValue={loggedinUser.displayName} ref={register({ required: true })} /> <br />
-                        {errors.name && <span style={{color: 'red'}}>This field is required<br /></span>} 
+                        <input name="displayName" className="input" placeholder="Your Name" defaultValue={loggedinUser.displayName} ref={register({ required: true })} /> <br />
+                        {errors.displayName && <span style={{ color: 'red' }}>This field is required<br /></span>}
 
                         <input name="email" className="input" placeholder="Email" defaultValue={loggedinUser.email} ref={register({ required: true })} /> <br />
-                        {errors.email && <span style={{color: 'red'}}>This field is required<br /></span>} 
+                        {errors.email && <span style={{ color: 'red' }}>This field is required<br /></span>}
 
                         <input type="date" name="date" className="input" placeholder="Date" ref={register({ required: true })} /> <br />
-                        {errors.date && <span style={{color: 'red'}}>This field is required<br /></span>} 
+                        {errors.date && <span style={{ color: 'red' }}>This field is required<br /></span>}
 
 
                         <input name="description" className="input" placeholder="Description" ref={register({ required: true })} /> <br />
-                        {errors.description && <span style={{color: 'red'}}>This field is required<br /></span>} 
+                        {errors.description && <span style={{ color: 'red' }}>This field is required<br /></span>}
 
-                        <input name="volunteeringField" className="input" placeholder="Name" defaultValue={selectedField.name} ref={register({ required: true })} disabled/> <br />
-                        {errors.volunteeringField && <span style={{color: 'red'}}>This field is required<br /></span>} 
+                        <input name="volunteeringField" className="input" placeholder="Name" defaultValue={selectedField.name} ref={register({ required: true })} disabled /> <br />
+                        {errors.volunteeringField && <span style={{ color: 'red' }}>This field is required<br /></span>}
 
-                        <br /><Button variant="primary" type="submit" style={{width: '100%'}}>Submit</Button>
+                        <br /><Button variant="primary" type="submit" style={{ width: '100%' }}>Submit</Button>
                     </form>
                 </div>
             </div>
