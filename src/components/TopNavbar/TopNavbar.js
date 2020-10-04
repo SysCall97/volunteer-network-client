@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../images/logos/logo.png';
 import { Button, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { userContext } from '../../App';
+import { signOut } from '../Login/firebase';
 
 const TopNavbar = () => {
+  const { user } = useContext(userContext);
+    const [loggedinUser, setLoggedinUser] = user;
   return (
-    <div style={{marginBottom: "2%"}}>
-      <Navbar bg="light" variant="light">
+    <div style={{ marginBottom: "2%" }}>
+      <Navbar bg="white" variant="light">
         <Navbar.Brand>
-        <Link to={`/home`} style={{ textDecoration: 'none' }}>
-          <img src={logo} alt="" width="30%" />
+          <Link to={`/home`} style={{ textDecoration: 'none' }}>
+            <img src={logo} alt="" width="30%" />
           </Link>
         </Navbar.Brand>
         <Nav className="ml-auto">
@@ -17,8 +21,22 @@ const TopNavbar = () => {
           <Nav.Link href="#">Donation</Nav.Link>
           <Nav.Link href="#">Events</Nav.Link>
           <Nav.Link href="#">Bolg</Nav.Link>
-          <Button variant="primary" style={{ marginRight: "10px" }}>Register</Button>
-          <Button variant="dark">Admin</Button>
+          {
+            !loggedinUser.loggedIn &&
+            <Link to="/login">
+              <Button variant="primary" style={{ marginRight: "10px" }}>Login</Button>
+            </Link>
+          }
+          {
+            loggedinUser.loggedIn &&
+            <Button variant="danger" style={{ marginRight: "10px" }} onClick={() => {
+              signOut();
+              setLoggedinUser({});
+            }}>Logout</Button>
+          }
+          <Link to="/admin">
+            <Button variant="dark">Admin</Button>
+          </Link>
         </Nav>
       </Navbar>
     </div>

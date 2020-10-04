@@ -20,7 +20,6 @@ export const googleSignIn = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
     return firebase.auth().signInWithPopup(provider)
         .then(res => {
-            console.log(res);
             const newUser = {
                 displayName: res.user.displayName,
                 email: res.user.email,
@@ -37,4 +36,8 @@ export const googleSignIn = () => {
             newUserInfo.isLoggedIn = false;
             return newUserInfo;
         });
+}
+
+export const signOut = () => {
+    firebase.auth().signOut();
 }

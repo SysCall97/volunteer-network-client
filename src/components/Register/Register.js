@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import logo from '../../images/logos/logo.png';
 import { useForm } from "react-hook-form";
 import { userContext } from '../../App';
@@ -11,62 +11,27 @@ const Register = () => {
     const [selectedField, setSelectedField] = useState({});
     const { user } = useContext(userContext);
     const [loggedinUser] = user;
+    const history = useHistory()
 
     const { register, handleSubmit, errors } = useForm();
-    const onSubmit = data => {
-        fetch(`http://localhost:5000/getUserByEmail/${data.email}`)
-            .then(res => res.json())
-            .then(user => {
-                if (user) {
-                    const newEvent = {
-                        eventId: id,
-                        date: data.date,
-                        description: data.description
-                    };
-                    user.reisteredEvents.push(newEvent);
-                    // console.log(user);
-                    fetch(`http://localhost:5000/updateUser/${user._id}`, {
-                        method: 'PATCH',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(user)
-                    })
-                        .then(res => res.json())
-                        .then(isInserted => {
-                            if (isInserted) {
-                                console.log('user updated successfully');
-                                //history replace
-                            }
-                        });
-                } else {
-                    const info = {
-                        displayName: data.displayName,
-                        email: data.email,
-                        reisteredEvents: [
-                            {
-                                eventId: id,
-                                date: data.date,
-                                description: data.description
-                            }
-                        ]
-                    }
 
-                    fetch(`http://localhost:5000/setNewUser`, {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify(info)
-                    })
-                        .then(res => res.json())
-                        .then(isInserted => {
-                            if (isInserted) {
-                                alert(isInserted);
-                            }
-                        });
-                }
-            })
+    const onSubmit = data => {
+        const newRegistration = {
+            displayName: data.displayName,
+            email: data.email,
+            eventId: id,
+            date: data.date,
+            description: data.description
+        }
+        fetch('http://localhost:5000/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newRegistration)
+        })
+        .then(res => res.json())
+        .then(isRegistrationCompleted => {
+            if(isRegistrationCompleted) history.replace('/registeredEvents')
+        })
     }
 
     useEffect(() => {

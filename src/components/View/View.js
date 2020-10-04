@@ -6,6 +6,7 @@ import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Register from '../Register/Register';
+import RegisteredEvents from '../RegisteredEvents/RegisteredEvents';
 
 const View = () => {
     return (
@@ -20,17 +21,17 @@ const View = () => {
                     <Home />
                 </Route>
 
-                {/* <PrivateRoute path="/register/:id">
+                <PrivateRoute path="/register/:id">
                     <Register />
-                </PrivateRoute> */}
+                </PrivateRoute>
 
-                <Route path="/register/:id">
-                    <Register />
-                </Route>
+                <PrivateRoute path="/registeredEvents">
+                    <RegisteredEvents />
+                </PrivateRoute>
 
-                <Route path="/admin">
+                <PrivateRoute path="/admin">
                     <Admin />
-                </Route>
+                </PrivateRoute>
 
                 <Route path="/login">
                     <Login />
