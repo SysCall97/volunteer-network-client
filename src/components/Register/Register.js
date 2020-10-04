@@ -23,7 +23,7 @@ const Register = () => {
             date: data.date,
             description: data.description
         }
-        fetch('http://localhost:5000/register', {
+        fetch('https://safe-atoll-12717.herokuapp.com/register', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newRegistration)
@@ -35,7 +35,7 @@ const Register = () => {
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5000/getEventById/${id}`)
+        fetch(`https://safe-atoll-12717.herokuapp.com/getEventById/${id}`)
             .then(res => res.json())
             .then(data => setSelectedField(data));
     }, []);

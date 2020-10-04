@@ -5,7 +5,7 @@ const VolunteerFields = () => {
     const [volunteeringFileds, setVolunteeringFileds] = useState({});
 
     useEffect(() => {
-        fetch('http://localhost:5000/getAllEvents')
+        fetch('https://safe-atoll-12717.herokuapp.com/getAllEvents')
         .then(res => res.json())
         .then(data => setVolunteeringFileds(data));
     }, []);

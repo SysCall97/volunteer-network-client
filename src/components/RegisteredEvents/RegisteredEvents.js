@@ -9,7 +9,7 @@ const RegisteredEvents = () => {
     const [registeredEvents, setRegisteredEvents] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/getRegisteredEvents/${loggedinUser.email}`)
+        fetch(`https://safe-atoll-12717.herokuapp.com/getRegisteredEvents/${loggedinUser.email}`)
             .then(res => res.json())
             .then(data => {
                 setRegisteredEvents(data);
@@ -19,7 +19,7 @@ const RegisteredEvents = () => {
     const handleDeleteRegisteredEvent = id => {
         const updatedRegisteredEvents = registeredEvents.filter(event => event._id !== id);
 
-        fetch(`http://localhost:5000/deleteRegisteredEvent/${id}`, {
+        fetch(`https://safe-atoll-12717.herokuapp.com/deleteRegisteredEvent/${id}`, {
             method: 'POST',
             headers: { 'content-type': 'application/json' }
         })

@@ -9,7 +9,7 @@ const ShowRegisteredEvent = props => {
     // console.log(props.event);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/getEventById/${eventId}`)
+        fetch(`https://safe-atoll-12717.herokuapp.com/getEventById/${eventId}`)
             .then(res => res.json())
             .then(data => setEventDetails(data));
     }, []);
