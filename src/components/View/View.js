@@ -7,6 +7,7 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 import Register from '../Register/Register';
 import RegisteredEvents from '../RegisteredEvents/RegisteredEvents';
+import VolunteerRegisterList from '../VolunteerRegisterList/VolunteerRegisterList';
 
 const View = () => {
     return (
@@ -29,9 +30,9 @@ const View = () => {
                     <RegisteredEvents />
                 </PrivateRoute>
 
-                <PrivateRoute path="/admin">
-                    <Admin />
-                </PrivateRoute>
+                <Route path="/volunteerregisterlist">
+                    <VolunteerRegisterList />
+                </Route>
 
                 <Route path="/login">
                     <Login />

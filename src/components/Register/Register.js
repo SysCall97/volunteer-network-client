@@ -15,11 +15,18 @@ const Register = () => {
 
     const { register, handleSubmit, errors } = useForm();
 
+    useEffect(() => {
+        fetch(`https://safe-atoll-12717.herokuapp.com/getEventById/${id}`)
+            .then(res => res.json())
+            .then(data => setSelectedField(data));
+    }, []);
+
     const onSubmit = data => {
         const newRegistration = {
             displayName: data.displayName,
             email: data.email,
             eventId: id,
+            eventName: selectedField.name,
             date: data.date,
             description: data.description
         }
@@ -34,11 +41,7 @@ const Register = () => {
         })
     }
 
-    useEffect(() => {
-        fetch(`https://safe-atoll-12717.herokuapp.com/getEventById/${id}`)
-            .then(res => res.json())
-            .then(data => setSelectedField(data));
-    }, []);
+    
 
     return (
         <div className="formContainer">

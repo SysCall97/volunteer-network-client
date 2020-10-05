@@ -102,3 +102,54 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.VolunteerListContainer{
+  background-color: #e5e5e5;
+  display: flex;
+}
+
+.adminLeft{
+  background-color: white;
+  border-bottom: 1px solid black;
+  width: 20vw;
+  height: 100vh;
+  padding-top: 20px;
+  padding-left: 3vw;
+}
+
+.adminLinks{
+  margin-top: 40px;
+}
+
+.active{
+  filter: invert(48%) sepia(100%) saturate(4831%) hue-rotate(198deg) brightness(99%) contrast(110%);
+}
+
+.adminRightTop{
+  background-color: white;
+  width: 80vw;
+  padding: 20px 40px;
+}
+
+.adminRightBottom{
+  background-color: white;
+  padding: 40px;
+  margin: 20px;
+}
+
+table{
+  width: 100%;
+  text-align: center;
+  
+}
+
+.tHead{
+  line-height: 50px;
+  background-color: #e5e5e5;
+  border: 1px solid black;
+  color: #777;
+}
+
+.tr{
+  line-height: 40px;
+}

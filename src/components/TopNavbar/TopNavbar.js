@@ -34,7 +34,7 @@ const TopNavbar = () => {
               setLoggedinUser({});
             }}>Logout</Button>
           }
-          <Link to="/admin">
+          <Link to="/volunteerregisterlist">
             <Button variant="dark">Admin</Button>
           </Link>
         </Nav>
