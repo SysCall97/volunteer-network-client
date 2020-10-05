@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import AddEvent from '../AddEvent/AddEvent';
-import Admin from '../Admin/Admin';
 import Home from '../Home/Home';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
