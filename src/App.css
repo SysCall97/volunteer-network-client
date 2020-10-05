@@ -146,10 +146,28 @@ table{
 .tHead{
   line-height: 50px;
   background-color: #e5e5e5;
-  border: 1px solid black;
   color: #777;
 }
 
 .tr{
-  line-height: 40px;
+  height: 80px;
+  text-align: center;
+}
+
+.actionTd{
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  
+}
+
+.actionContainer{
+  width: 20%;
+  height: auto;
+  margin-top: 28px;
+  background-color: #FF444A;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 0;
+  margin-left: 0 !important;
 }

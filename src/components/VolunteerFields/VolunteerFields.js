@@ -7,7 +7,10 @@ const VolunteerFields = () => {
     useEffect(() => {
         fetch('https://safe-atoll-12717.herokuapp.com/getAllEvents')
         .then(res => res.json())
-        .then(data => setVolunteeringFileds(data));
+        .then(data => {
+            localStorage.setItem('lastEventId', data[data.length-1].id);
+            setVolunteeringFileds(data);
+        });
     }, []);
     return (
         <div>

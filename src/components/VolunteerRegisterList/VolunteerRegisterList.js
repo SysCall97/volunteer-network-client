@@ -8,7 +8,7 @@ const VolunteerRegisterList = () => {
     useEffect(() => {
         fetch('https://safe-atoll-12717.herokuapp.com/getAllUsers')
             .then(res => res.json())
-            .then(data => { setUsers(data); console.log(data); });
+            .then(data => setUsers(data));
     }, []);
 
     const removeUser = id => {
@@ -29,7 +29,7 @@ const VolunteerRegisterList = () => {
 
     return (
         <div className="VolunteerListContainer">
-            <AdminLeft />
+            <AdminLeft volunteerList={true} />
             <div>
                 <div className="adminRightTop">
                     <h4>Volunteer register list</h4>
@@ -61,8 +61,8 @@ const VolunteerRegisterList = () => {
                                 <td style={{fontWeight: 'bold'}}>{user.email}</td>
                                 <td>{user.date}</td>
                                 <td>{user.eventName}</td>
-                                <td>
-                                    <div style={{width:"20%", height:"20%", backgroundColor: '#FF444A', cursor: 'pointer'}} onClick={() => removeUser(user._id)}>
+                                <td className="actionTd">
+                                    <div className="actionContainer" onClick={() => removeUser(user._id)}>
                                         <img src={trash} alt="" height='100%' width='100%'/>
                                     </div>
                                 </td>

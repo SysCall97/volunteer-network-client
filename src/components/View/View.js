@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import AddEvent from '../AddEvent/AddEvent';
 import Admin from '../Admin/Admin';
 import Home from '../Home/Home';
 import Login from '../Login/Login';
@@ -32,6 +33,10 @@ const View = () => {
 
                 <Route path="/volunteerregisterlist">
                     <VolunteerRegisterList />
+                </Route>
+
+                <Route path="/addEvent">
+                    <AddEvent />
                 </Route>
 
                 <Route path="/login">
