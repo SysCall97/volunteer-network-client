@@ -26,29 +26,31 @@
 
 ### Screenshots
 **HomePage**
-<img src="https://i.ibb.co/PNBRmwK/landpage.png" width="300">
+<img src="https://i.ibb.co/KqNWmC5/landpage.png" width="300">
 
 **Log In**
-<img src="https://i.ibb.co/Js4kSXL/login.png" width="500">
+<img src="https://i.ibb.co/p0sX4kc/login.png" width="500">
 
-**Order Placement**
-<img src="https://i.ibb.co/6R6613y/user-order-dashboard.png" width="500">
+**User Resigter**
+<img src="https://i.ibb.co/1XzSggc/register-For-An-Event.png" width="500">
 
-**User Service List**
-<img src="https://i.ibb.co/g79bCrj/user-service-List-dashboard.png" width="500">
+**User Registered Events List**
+<img src="https://i.ibb.co/HBxNzVr/registered-Events.png" width="500">
 
 **User Review**
 <img src="https://i.ibb.co/Bs7pmB5/user-review-dashboard.png" width="500">
 
-**Admin Service List**
-<img src="https://i.ibb.co/VwwDG5d/admin-service-List-dashboard.png" width="500">
+**Admin Participants List**
+<img src="https://i.ibb.co/9GRvrLd/admin-volunteer-list.png" width="500">
 
-**Admin Add Service**
-<img src="https://i.ibb.co/8mdQx4d/admin-add-Service-dashboard.png" width="500">
-
-**Admin Make New Admin**
-<img src="https://i.ibb.co/YRRFSHg/admin-make-Admin-dashboard.png" width="500">
-
+**Admin Add Event**
+<img src="https://i.ibb.co/TqNwkf5/addEvent.png" width="500">
 
 
 **Resume:** [https://drive.google.com/file/d/12oxT5yjx6ztnUAtrRBlzxjm2JyvlzU-c/view?]
+
+
+
+
+
+
