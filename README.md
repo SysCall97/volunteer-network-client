@@ -9,6 +9,7 @@
 - React-bootstrap
 - Reack hook form
 - Node Js (for back-end)
+- Mongo DB
 - Firebase authentication
 - HTML
 - CSS
