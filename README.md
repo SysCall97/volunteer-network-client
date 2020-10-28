@@ -22,7 +22,7 @@
     - Can see all the volunteering event that he/she registered.
 2. Admin
     - Can see all the participants.
-    - Can remove a participant from a particualar event.
+    - Can remove a participant from a particular event.
     - Can add a new volunteering event which is dynamically shown on the homepage.
 
 ### Screenshots
