@@ -48,7 +48,7 @@
 <img src="https://i.ibb.co/TqNwkf5/addEvent.png" width="500">
 
 
-**Resume:** [https://drive.google.com/file/d/12oxT5yjx6ztnUAtrRBlzxjm2JyvlzU-c/view?]
+**Resume:** [https://drive.google.com/file/d/1uL0DDwMPt7Sd9SfUg4bwe1NBFbOC04U5/view?]
 
 
 
